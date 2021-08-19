@@ -1,7 +1,20 @@
+######################################################################
+#                                                                    #
+#                                                                    #
+#                     createParFile                                  #
+#                                                                    #
+#                                                                    #
+######################################################################
+
+"""
+python function for creating a text file that acts as the parameterfile
+to drive molecfit routines for the purpose of telluric absorption 
+correction in astronomical spectra.
+
+This function has been adopted from https://github.com/ryanhoughton/PyMolecFit.
+
+"""
 import numpy as np
-import pylab as pl
-import uuid
-import pdb
 import os
 
 def createParFile(objfile, parfile=None, parfile_dir='/Volumes/Samsung_T5/ESPRESSO/ESPRESSO5/S1D/molecfit/',\
@@ -56,12 +69,8 @@ def createParFile(objfile, parfile=None, parfile_dir='/Volumes/Samsung_T5/ESPRES
     """
     # create output parfilename
     if parfile==None:
-#AS        parfile = user_workdir+outdir+objfile[:objfile.rfind(".fits")]+".molecfit.par"
         parfile = parfile_dir+objfile[:objfile.rfind(".fits")]+".par"
-#AS    # create outdir if not present
-#AS    if (not os.path.isdir(user_workdir+outdir)):
-#AS        os.mkdir(user_workdir+outdir)
-    # create pardir if not present
+
     if (not os.path.isdir(parfile_dir+objfile[:objfile.rfind(".fits")])):
         os.mkdir(parfile_dir+objfile[:objfile.rfind(".fits")])
 
